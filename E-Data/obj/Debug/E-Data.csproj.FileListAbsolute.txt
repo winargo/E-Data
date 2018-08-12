@@ -1,0 +1,11 @@
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\bin\Debug\E-Data.exe.config
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.csprojResolveAssemblyReference.cache
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.Properties.Resources.resources
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.csproj.GenerateResource.Cache
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\bin\Debug\E-Data.exe
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\bin\Debug\E-Data.pdb
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.exe
+c:\users\rwina\documents\visual studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.pdb
+C:\Users\rwina\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.mainmenu.resources
+C:\Users\rwina\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.newdata.resources
+C:\Users\rwina\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.mysqlform.resources
