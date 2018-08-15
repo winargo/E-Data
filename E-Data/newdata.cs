@@ -160,6 +160,7 @@ namespace E_Data
                                             SqlDataAdapter cmd = new SqlDataAdapter();
                                             using (var insertCommand = new SqlCommand("insert into customer (ID,nama_customer,alamat_customer,no_telepon,no_handphone,no_fax,produk_customer,teknisi_customer,tanggal_pasang,create_date,keterangan) values('" + mainmenu.RandomString(499) + "','" + ncust.Text.ToString() + "','" + alcust.Text.ToString() + "','" + tcust.Text.ToString() + "','" + hpcust.Text.ToString() + "','" + fcust.Text.ToString() + "','" + pcust.Text.ToString() + "','" + tekcust.Text.ToString() + "','" + dtptek.Value.ToString() + "','" + DateTime.Now.ToShortDateString() + "','" + ketcust.Text.ToString() + "')"))
                                             {
+
                                                 insertCommand.Connection = connection1;
                                                 cmd.InsertCommand = insertCommand;
                                                 //.....
