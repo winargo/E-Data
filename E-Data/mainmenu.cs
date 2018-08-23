@@ -14,6 +14,8 @@ namespace E_Data
 {
     public partial class mainmenu : Form
     {
+        public static string idcustomer = "";
+
         private int childFormNumber = 0;
         private static Random random = new Random();
         public static string RandomString(int length)
@@ -187,6 +189,12 @@ namespace E_Data
         {
             mysqlform connect = new mysqlform();
             connect.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form showsearch = new search();
+            showsearch.ShowDialog();
         }
     }
 }

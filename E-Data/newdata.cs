@@ -137,17 +137,6 @@ namespace E_Data
                                     forms.ShowDialog();
                                 }
                                 else {
-                                    SqlConnection myConnection = new SqlConnection("Server=" + Settings.Default.server + ";" +
-                                                           "Trusted_Connection=yes;" +
-                                                           "user id=" + Settings.Default.username + "; " +
-                                                           "password=" + Settings.Default.password + "; " +
-                                                           "database=" + Settings.Default.database + "; " +
-                                                           "connection timeout=20");
-
-
-                                    
-
-
                                     try
                                     {
                                         using (var connection1 = new SqlConnection("Server=" + Settings.Default.server + ";" +
@@ -157,44 +146,124 @@ namespace E_Data
                                                            "database=" + Settings.Default.database + "; " +
                                                            "connection timeout=20"))
                                         {
-                                            SqlDataAdapter cmd = new SqlDataAdapter();
-                                            using (var insertCommand = new SqlCommand("insert into customer (ID,nama_customer,alamat_customer,no_telepon,no_handphone,no_fax,produk_customer,teknisi_customer,tanggal_pasang,create_date,keterangan) values('" + mainmenu.RandomString(499) + "','" + ncust.Text.ToString() + "','" + alcust.Text.ToString() + "','" + tcust.Text.ToString() + "','" + hpcust.Text.ToString() + "','" + fcust.Text.ToString() + "','" + pcust.Text.ToString() + "','" + tekcust.Text.ToString() + "','" + dtptek.Value.ToString() + "','" + DateTime.Now.ToShortDateString() + "','" + ketcust.Text.ToString() + "')"))
-                                            {
-
-                                                insertCommand.Connection = connection1;
-                                                cmd.InsertCommand = insertCommand;
-                                                //.....
-                                                connection1.Open();
-
-                                                int a = insertCommand.ExecuteNonQuery();
-
-                                                if (a == 0)
+                                                SqlDataAdapter cmd = new SqlDataAdapter();
+                                                using (var checkCommand = new SqlCommand("select * from customer where nama_customer = '" + ncust.Text.ToString() + "'"))
                                                 {
-                                                    info.Text = "Info : Data customer (" + ncust.Text.ToString() + ") Tidak Tersimpan , terjadi kesalahan";
-                                                    info.ForeColor = System.Drawing.Color.Red;
-                                                }
-                                                else if (a == 1)
-                                                {
-                                                    String Data = ncust.Text.ToString();
 
-                                                    ncust.Text = "";
-                                                    tcust.Text = "";
-                                                    hpcust.Text = "";
-                                                    ketcust.Text = "";
-                                                    alcust.Text = "";
-                                                    fcust.Text = "";
-                                                    tekcust.Text = "";
-                                                    dtptek.Value = DateTime.Now;
-                                                    pcust.Text = "";
+                                                    checkCommand.Connection = connection1;
+                                                    cmd.InsertCommand = checkCommand;
+                                                    //.....
+                                                    connection1.Open();
 
-                                                    info.Text = "Info : Data customer (" + Data + ") Tersimpan ";
-                                                    info.ForeColor = System.Drawing.Color.Green;
+                                                    SqlDataReader a = checkCommand.ExecuteReader();
+
+                                                int b = 0;
+
+                                                while (a.Read()) {
+                                                    b++;
                                                 }
 
+                                                if (b > 0)
+                                                {
+                                                    DialogResult dialogResult = MessageBox.Show("Data " + ncust.Text.ToString() + " sudah pernah diregistrasi, masukkan data yang sama ? (Direkomendasi nama dengan angka belakang untuk identifikasi lebih mudah)", "Data Duplikat Terdeteksi", MessageBoxButtons.YesNo);
+                                                    if (dialogResult == DialogResult.Yes)
+                                                    {
+                                                        connection1.Close();
+                                                        a.Close();
 
-                                                
-                                                // .... you don't need to close the connection explicitely
-                                            }
+                                                        cmd = new SqlDataAdapter();
+                                                        using (var insertCommand = new SqlCommand("insert into customer (ID,nama_customer,alamat_customer,no_telepon,no_handphone,no_fax,produk_customer,teknisi_customer,tanggal_pasang,create_date,keterangan) values('" + mainmenu.RandomString(499) + "','" + ncust.Text.ToString() + "','" + alcust.Text.ToString() + "','" + tcust.Text.ToString() + "','" + hpcust.Text.ToString() + "','" + fcust.Text.ToString() + "','" + pcust.Text.ToString() + "','" + tekcust.Text.ToString() + "','" + dtptek.Value.ToString() + "','" + DateTime.Now.ToShortDateString() + "','" + ketcust.Text.ToString() + "')"))
+                                                        {
+
+                                                            insertCommand.Connection = connection1;
+                                                            cmd.InsertCommand = insertCommand;
+                                                            //.....
+                                                            connection1.Open();
+
+                                                            b = insertCommand.ExecuteNonQuery();
+
+                                                            if (b == 0)
+                                                            {
+                                                                info.Text = "Info : Data customer (" + ncust.Text.ToString() + ") Tidak Tersimpan , terjadi kesalahan";
+                                                                info.ForeColor = System.Drawing.Color.Red;
+                                                            }
+                                                            else if (b == 1)
+                                                            {
+                                                                String Data = ncust.Text.ToString();
+
+                                                                ncust.Text = "";
+                                                                tcust.Text = "";
+                                                                hpcust.Text = "";
+                                                                ketcust.Text = "";
+                                                                alcust.Text = "";
+                                                                fcust.Text = "";
+                                                                tekcust.Text = "";
+                                                                dtptek.Value = DateTime.Now;
+                                                                pcust.Text = "";
+
+                                                                info.Text = "Info : Data customer (" + Data + ") Tersimpan ";
+                                                                info.ForeColor = System.Drawing.Color.Green;
+                                                            }
+
+
+
+                                                            // .... you don't need to close the connection explicitely
+                                                        }
+                                                        //do something
+                                                    }
+                                                    else if (dialogResult == DialogResult.No)
+                                                    {
+                                                        connection1.Close();
+                                                        a.Close();
+                                                        //do something else
+                                                    }
+                                                }
+                                                else if (b==0) {
+                                                    connection1.Close();
+                                                    a.Close();
+                                                    cmd = new SqlDataAdapter();
+                                                    using (var insertCommand = new SqlCommand("insert into customer (ID,nama_customer,alamat_customer,no_telepon,no_handphone,no_fax,produk_customer,teknisi_customer,tanggal_pasang,create_date,keterangan) values('" + mainmenu.RandomString(499) + "','" + ncust.Text.ToString() + "','" + alcust.Text.ToString() + "','" + tcust.Text.ToString() + "','" + hpcust.Text.ToString() + "','" + fcust.Text.ToString() + "','" + pcust.Text.ToString() + "','" + tekcust.Text.ToString() + "','" + dtptek.Value.ToString() + "','" + DateTime.Now.ToShortDateString() + "','" + ketcust.Text.ToString() + "')"))
+                                                    {
+
+                                                        insertCommand.Connection = connection1;
+                                                        cmd.InsertCommand = insertCommand;
+                                                        //.....
+                                                        connection1.Open();
+
+                                                        b = insertCommand.ExecuteNonQuery();
+
+                                                        if (b == 0)
+                                                        {
+                                                            info.Text = "Info : Data customer (" + ncust.Text.ToString() + ") Tidak Tersimpan , terjadi kesalahan";
+                                                            info.ForeColor = System.Drawing.Color.Red;
+                                                        }
+                                                        else if (b == 1)
+                                                        {
+                                                            String Data = ncust.Text.ToString();
+
+                                                            ncust.Text = "";
+                                                            tcust.Text = "";
+                                                            hpcust.Text = "";
+                                                            ketcust.Text = "";
+                                                            alcust.Text = "";
+                                                            fcust.Text = "";
+                                                            tekcust.Text = "";
+                                                            dtptek.Value = DateTime.Now;
+                                                            pcust.Text = "";
+
+                                                            info.Text = "Info : Data customer (" + Data + ") Tersimpan ";
+                                                            info.ForeColor = System.Drawing.Color.Green;
+                                                        }
+
+
+
+                                                        // .... you don't need to close the connection explicitely
+                                                    }
+
+                                                }
+                                                    // .... you don't need to close the connection explicitely
+                                                }
+                                            
                                         }
                                     }
                                     catch (Exception dataexcp)

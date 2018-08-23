@@ -44,7 +44,7 @@ namespace E_Data
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("You failed!" + ex.Message);
+                MessageBox.Show("failed!" + ex.Message);
             }
         }
 
