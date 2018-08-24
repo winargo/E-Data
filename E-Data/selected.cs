@@ -14,6 +14,18 @@ namespace E_Data
 {
     public partial class selected : Form
     {
+
+        public int editing = 0;
+        public string nacust = "";
+        public string alacust = "";
+        public string prcust = "";
+        public string hpccust = "";
+        public string tecust = "";
+        public string tekncust = "";
+        public string ketecust = "";
+        public DateTime cust ;
+        public string facust = "";
+
         public selected()
         {
             InitializeComponent();
@@ -57,7 +69,7 @@ namespace E_Data
                             pcust.Text = a["produk_customer"].ToString();
                             tcust.Text = a["teknisi_customer"].ToString();
                             ketcust.Text = a["keterangan"].ToString();
-                            //dtptek. = a["tanggal_pasang"];
+                            dtptek.Value = (DateTime) a["tanggal_pasang"];
                         }
 
                         if (count > 0)
@@ -77,21 +89,86 @@ namespace E_Data
 
         private void kosong_Click(object sender, EventArgs e)
         {
+            editing = 1;
+
+            button1.Enabled = false;
+            Print.Text = "Simpan";
+
+            kosong.Text = "Editing...";
+
+            kosong.Enabled = false;
+
+            nacust = ncust.Text;
+            alacust = alcust.Text;
+            tecust = tcust.Text;
+            hpccust = hpcust.Text;
+            facust = fcust.Text;
+            prcust =pcust.Text;
+            tekncust = tekcust.Text;
+            cust = dtptek.Value;
+            ketecust = ketcust.Text;
+
+            ncust.Text = nacust;
+            alcust.Text = alacust;
+            tcust.Text = tecust;
+            hpcust.Text = hpccust;
+            fcust.Text = facust;
+            pcust.Text = prcust;
+            tekcust.Text = tekncust;
+            dtptek.Value = cust;
+            ketcust.Text = ketecust;
+
             ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
-            ncust.ReadOnly = false;
+            tcust.ReadOnly = false;
+            alcust.ReadOnly = false;
+            hpcust.ReadOnly = false;
+            fcust.ReadOnly = false;
+            pcust.ReadOnly = false;
+            tekcust.ReadOnly = false;
+            dtptek.Enabled = true;
+            ketcust.ReadOnly = false;
+
         }
 
         private void batal_Click(object sender, EventArgs e)
         {
-            mainmenu.idcustomer = "";
-            this.Close();
+            if (editing == 1)
+            {
+                editing = 0;
+
+                button1.Enabled = true;
+                Print.Text = "Print";
+
+                kosong.Text = "Edit";
+
+                kosong.Enabled = true;
+
+                ncust.Text = nacust;
+                alcust.Text = alacust;
+                tcust.Text = tecust;
+                hpcust.Text = hpccust;
+                fcust.Text = facust;
+                pcust.Text = prcust;
+                tekcust.Text = tekncust;
+                dtptek.Value = cust;
+                ketcust.Text = ketecust;
+
+
+
+                ncust.ReadOnly = true;
+                tcust.ReadOnly = true;
+                alcust.ReadOnly = true;
+                hpcust.ReadOnly = true;
+                fcust.ReadOnly = true;
+                pcust.ReadOnly = true;
+                tekcust.ReadOnly = true;
+                dtptek.Enabled = false;
+                ketcust.ReadOnly = true;
+            }
+            else {
+                mainmenu.idcustomer = "";
+                this.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -147,6 +224,23 @@ namespace E_Data
                 //do something else
             }
             
+        }
+
+        private void Print_Click(object sender, EventArgs e)
+        {
+            if (editing == 1)
+            {
+
+                
+
+            }
+            else {
+                print();
+            }
+        }
+
+        private void print() {
+
         }
     }
 }

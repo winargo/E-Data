@@ -14,3 +14,13 @@ C:\Users\rwina\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_D
 C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\bin\Debug\E-Data.exe.config
 C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.exe
 C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.pdb
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\bin\Debug\E-Data.exe
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\bin\Debug\E-Data.pdb
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.csprojResolveAssemblyReference.cache
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.mysqlform.resources
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.mainmenu.resources
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.newdata.resources
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.Properties.Resources.resources
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.search.resources
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E_Data.selected.resources
+C:\Users\riandy\Documents\Visual Studio 2015\Projects\E-Data\E-Data\obj\Debug\E-Data.csproj.GenerateResource.Cache

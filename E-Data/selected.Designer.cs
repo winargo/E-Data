@@ -75,6 +75,7 @@
             this.Print.TabIndex = 50;
             this.Print.Text = "Print";
             this.Print.UseVisualStyleBackColor = true;
+            this.Print.Click += new System.EventHandler(this.Print_Click);
             // 
             // batal
             // 
