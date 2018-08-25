@@ -146,20 +146,21 @@ namespace E_Data
                                                            "database=" + Settings.Default.database + "; " +
                                                            "connection timeout=20"))
                                         {
-                                                SqlDataAdapter cmd = new SqlDataAdapter();
-                                                using (var checkCommand = new SqlCommand("select * from customer where nama_customer = '" + ncust.Text.ToString() + "'"))
-                                                {
+                                            SqlDataAdapter cmd = new SqlDataAdapter();
+                                            using (var checkCommand = new SqlCommand("select * from customer where nama_customer = '" + ncust.Text.ToString() + "'"))
+                                            {
 
-                                                    checkCommand.Connection = connection1;
-                                                    cmd.InsertCommand = checkCommand;
-                                                    //.....
-                                                    connection1.Open();
+                                                checkCommand.Connection = connection1;
+                                                cmd.InsertCommand = checkCommand;
+                                                //.....
+                                                connection1.Open();
 
-                                                    SqlDataReader a = checkCommand.ExecuteReader();
+                                                SqlDataReader a = checkCommand.ExecuteReader();
 
                                                 int b = 0;
 
-                                                while (a.Read()) {
+                                                while (a.Read())
+                                                {
                                                     b++;
                                                 }
 
@@ -218,7 +219,8 @@ namespace E_Data
                                                         //do something else
                                                     }
                                                 }
-                                                else if (b==0) {
+                                                else if (b == 0)
+                                                {
                                                     connection1.Close();
                                                     a.Close();
                                                     cmd = new SqlDataAdapter();
@@ -261,9 +263,9 @@ namespace E_Data
                                                     }
 
                                                 }
-                                                    // .... you don't need to close the connection explicitely
-                                                }
-                                            
+                                                // .... you don't need to close the connection explicitely
+                                            }
+
                                         }
                                     }
                                     catch (Exception dataexcp)
@@ -276,7 +278,7 @@ namespace E_Data
                     }
                 }
             }
-            
+
 
         }
     }

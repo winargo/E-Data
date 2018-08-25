@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(selected));
             this.kosong = new System.Windows.Forms.Button();
             this.Print = new System.Windows.Forms.Button();
             this.batal = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.info = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // kosong
@@ -328,11 +330,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // info
+            // 
+            this.info.AutoSize = true;
+            this.info.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info.Location = new System.Drawing.Point(14, 278);
+            this.info.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(51, 17);
+            this.info.TabIndex = 53;
+            this.info.Text = "Info  :  ";
+            // 
             // selected
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 363);
+            this.Controls.Add(this.info);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.kosong);
             this.Controls.Add(this.Print);
@@ -355,6 +369,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "selected";
             this.Text = "selected";
             this.Load += new System.EventHandler(this.selected_Load);
@@ -387,5 +402,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label info;
     }
 }

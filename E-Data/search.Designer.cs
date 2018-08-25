@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(search));
             this.label1 = new System.Windows.Forms.Label();
             this.searchbox = new System.Windows.Forms.TextBox();
             this.cb1 = new System.Windows.Forms.ComboBox();
@@ -132,6 +133,7 @@
             this.Controls.Add(this.cb1);
             this.Controls.Add(this.searchbox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "search";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "search";

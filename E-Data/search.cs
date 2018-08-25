@@ -238,5 +238,20 @@ namespace E_Data
         {
             refresh();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            bool bHandled = false;
+            // switch case is the easy way, a hash or map would be better, 
+            // but more work to get set up.
+            switch (keyData)
+            {
+                case Keys.F5:
+                    refresh();
+                    bHandled = true;
+                    break;
+            }
+            return bHandled;
+        }
     }
 }

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using E_Data.Properties;
+using System.Windows.Media.Imaging;
+using System.IO.Packaging;
 
 namespace E_Data
 {
@@ -119,7 +121,14 @@ namespace E_Data
         {
             if (Settings.Default.server != null || Settings.Default.server != "" && Settings.Default.server != null || Settings.Default.server != "")
             {
-
+                try
+                {
+                    pictureBox1.Image = new Bitmap(Settings.Default.imagedir.ToString());
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                catch (Exception exp) {
+                    
+                }
             }
             else {
                 mysqlform connect = new mysqlform();
@@ -141,12 +150,14 @@ namespace E_Data
 
         private void printDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form showsearch = new search();
+            showsearch.ShowDialog();
         }
 
         private void searchDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form showsearch = new search();
+            showsearch.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -156,10 +167,25 @@ namespace E_Data
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Change Background Picture ?", "Info", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                
+
+                using (OpenFileDialog dlg = new OpenFileDialog())
+                {
+                    dlg.Title = "Open Image";
+                    dlg.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.png) | *.jpg; *.jpeg; *.jpe; *.png";;
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        // Create a new Bitmap object from the picture file on disk,
+                        // and assign that to the PictureBox.Image property
+                        pictureBox1.Image = new Bitmap(dlg.FileName);
+                        Settings.Default.imagedir = dlg.FileName;
+                        Settings.Default.Save();
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                }
             }
             else if (dialogResult == DialogResult.No)
             {

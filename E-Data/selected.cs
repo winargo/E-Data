@@ -67,7 +67,7 @@ namespace E_Data
                             hpcust.Text = a["no_handphone"].ToString();
                             fcust.Text = a["no_fax"].ToString();
                             pcust.Text = a["produk_customer"].ToString();
-                            tcust.Text = a["teknisi_customer"].ToString();
+                            tekcust.Text = a["teknisi_customer"].ToString();
                             ketcust.Text = a["keterangan"].ToString();
                             dtptek.Value = (DateTime) a["tanggal_pasang"];
                         }
@@ -230,9 +230,201 @@ namespace E_Data
         {
             if (editing == 1)
             {
+                if (ncust.Text.ToString().Equals(""))
+                {
+                    info.Text = "Info : Nama Customer Kosong";
+                    info.ForeColor = System.Drawing.Color.Red;
+                }
+                else {
+                    if (alcust.Text.ToString().Equals(""))
+                    {
+                        info.Text = "Info : Data Alamat Kosong";
+                        info.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else {
+                        if (tcust.Text.ToString().Equals("") || hpcust.Text.ToString().Equals(""))
+                        {
+                            info.Text = "Info : Data No hp / Telepon Tidak Lengkap";
+                            info.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            if (pcust.Text.ToString().Equals(""))
+                            {
+                                info.Text = "Info : Produk Customer Tidak diisi";
+                                info.ForeColor = System.Drawing.Color.Red;
+                            }
+                            else {
+                                if (tekcust.Text.ToString().Equals(""))
+                                {
+                                    info.Text = "Info : Teknisi Customer Tidak Lengkap";
+                                    info.ForeColor = System.Drawing.Color.Red;
+                                }
+                                else {
+                                    if (Settings.Default.server.Equals(""))
+                                    {
+                                        mysqlform forms = new mysqlform();
+                                        forms.ShowDialog();
+                                    }
+                                    else {
+                                        try
+                                        {
+                                            using (var connection1 = new SqlConnection("Server=" + Settings.Default.server + ";" +
+                                                               "Trusted_Connection=yes;" +
+                                                               "user id=" + Settings.Default.username + "; " +
+                                                               "password=" + Settings.Default.password + "; " +
+                                                               "database=" + Settings.Default.database + "; " +
+                                                               "connection timeout=20"))
+                                            {
+                                                SqlDataAdapter cmd = new SqlDataAdapter();
+                                                using (var checkCommand = new SqlCommand("select * from customer where nama_customer = '" + ncust.Text.ToString() + "'"))
+                                                {
 
+                                                    checkCommand.Connection = connection1;
+                                                    cmd.InsertCommand = checkCommand;
+                                                    //.....
+                                                    connection1.Open();
+
+                                                    SqlDataReader a = checkCommand.ExecuteReader();
+
+                                                    int b = 0;
+
+                                                    while (a.Read())
+                                                    {
+                                                        b++;
+                                                    }
+
+
+
+                                                    if (b > 0)
+                                                    {
+                                                        DialogResult dialogResult = MessageBox.Show("Data " + ncust.Text.ToString() + " sudah pernah diregistrasi, masukkan data yang sama ? (Direkomendasi nama dengan angka belakang untuk identifikasi lebih mudah)", "Data Duplikat Terdeteksi", MessageBoxButtons.YesNo);
+                                                        if (dialogResult == DialogResult.Yes)
+                                                        {
+                                                            connection1.Close();
+                                                            a.Close();
+
+                                                            cmd = new SqlDataAdapter();
+                                                            using (var insertCommand = new SqlCommand("update customer set nama_customer='" + ncust.Text.ToString() + "',alamat_customer='" + alcust.Text.ToString() + "',no_telepon='" + tcust.Text.ToString() + "',no_handphone='" + hpcust.Text.ToString() + "',no_fax='" + fcust.Text.ToString() + "',produk_customer='" + pcust.Text.ToString() + "',teknisi_customer='" + tekcust.Text.ToString() + "',keterangan='" + ketcust.Text.ToString() + "',tanggal_pasang='" + dtptek.Value.ToString() + "' where ID = '" + mainmenu.idcustomer + "'"))
+                                                            {
+
+                                                                insertCommand.Connection = connection1;
+                                                                cmd.InsertCommand = insertCommand;
+                                                                //.....
+                                                                connection1.Open();
+
+                                                                int c = insertCommand.ExecuteNonQuery();
+
+                                                                if (c == 0)
+                                                                {
+
+                                                                }
+                                                                else if (c == 1)
+                                                                {
+                                                                    mainmenu.idcustomer = "";
+                                                                    info.Text="Data diedit";
+                                                                    info.ForeColor = System.Drawing.Color.Green;
+
+                                                                    editing = 0;
+
+                                                                    button1.Enabled = true;
+                                                                    Print.Text = "Print";
+
+                                                                    kosong.Text = "Edit";
+
+                                                                    kosong.Enabled = true;
+
+                                                                    ncust.ReadOnly = true;
+                                                                    tcust.ReadOnly = true;
+                                                                    alcust.ReadOnly = true;
+                                                                    hpcust.ReadOnly = true;
+                                                                    fcust.ReadOnly = true;
+                                                                    pcust.ReadOnly = true;
+                                                                    tekcust.ReadOnly = true;
+                                                                    dtptek.Enabled = false;
+                                                                    ketcust.ReadOnly = true;
+                                                                }
+
+
+
+                                                                // .... you don't need to close the connection explicitely
+                                                            }
+                                                            //do something
+                                                        }
+                                                        else if (dialogResult == DialogResult.No)
+                                                        {
+                                                            connection1.Close();
+                                                            a.Close();
+                                                            //do something else
+                                                        }
+                                                    }
+                                                    else if (b == 0)
+                                                    {
+                                                        connection1.Close();
+                                                        a.Close();
+                                                        cmd = new SqlDataAdapter();
+                                                        using (var insertCommand = new SqlCommand("update customer set nama_customer='" + ncust.Text.ToString() + "',alamat_customer='" + alcust.Text.ToString() + "',no_telepon='" + tcust.Text.ToString() + "',no_handphone='" + hpcust.Text.ToString() + "',no_fax='" + fcust.Text.ToString() + "',produk_customer='" + pcust.Text.ToString() + "',teknisi_customer='" + tekcust.Text.ToString() + "',keterangan='" + ketcust.Text.ToString() + "',tanggal_pasang='" + dtptek.Value.ToString() + "' where ID = '" + mainmenu.idcustomer + "'"))
+                                                        {
+
+                                                            insertCommand.Connection = connection1;
+                                                            cmd.InsertCommand = insertCommand;
+                                                            //.....
+                                                            connection1.Open();
+
+                                                            int d = insertCommand.ExecuteNonQuery();
+
+                                                            if (d == 0)
+                                                            {
+
+                                                            }
+                                                            else if (d == 1)
+                                                            {
+                                                                mainmenu.idcustomer = "";
+                                                                info.Text = "Data diedit";
+                                                                info.ForeColor = System.Drawing.Color.Green;
+
+                                                                editing = 0;
+
+                                                                button1.Enabled = true;
+                                                                Print.Text = "Print";
+
+                                                                kosong.Text = "Edit";
+
+                                                                kosong.Enabled = true;
+
+                                                                ncust.ReadOnly = true;
+                                                                tcust.ReadOnly = true;
+                                                                alcust.ReadOnly = true;
+                                                                hpcust.ReadOnly = true;
+                                                                fcust.ReadOnly = true;
+                                                                pcust.ReadOnly = true;
+                                                                tekcust.ReadOnly = true;
+                                                                dtptek.Enabled = false;
+                                                                ketcust.ReadOnly = true;
+                                                            }
+
+
+
+                                                            // .... you don't need to close the connection explicitely
+                                                        }
+
+                                                    }
+                                                    // .... you don't need to close the connection explicitely
+                                                }
+
+                                            }
+                                        }
+                                        catch (Exception dataexcp)
+                                        {
+                                            MessageBox.Show(dataexcp.ToString(), "Error On SQL Connection");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 
-
             }
             else {
                 print();
