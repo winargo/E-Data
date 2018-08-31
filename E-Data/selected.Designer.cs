@@ -52,13 +52,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.info = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.nkcust = new System.Windows.Forms.TextBox();
+            this.nscust = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // kosong
             // 
             this.kosong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kosong.Location = new System.Drawing.Point(406, 309);
+            this.kosong.Location = new System.Drawing.Point(406, 380);
             this.kosong.Margin = new System.Windows.Forms.Padding(2);
             this.kosong.Name = "kosong";
             this.kosong.Size = new System.Drawing.Size(151, 43);
@@ -70,7 +74,7 @@
             // Print
             // 
             this.Print.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Print.Location = new System.Drawing.Point(609, 309);
+            this.Print.Location = new System.Drawing.Point(609, 380);
             this.Print.Margin = new System.Windows.Forms.Padding(2);
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(141, 43);
@@ -82,7 +86,7 @@
             // batal
             // 
             this.batal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.batal.Location = new System.Drawing.Point(13, 309);
+            this.batal.Location = new System.Drawing.Point(13, 380);
             this.batal.Margin = new System.Windows.Forms.Padding(2);
             this.batal.Name = "batal";
             this.batal.Size = new System.Drawing.Size(117, 43);
@@ -95,7 +99,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(14, 245);
+            this.label9.Location = new System.Drawing.Point(14, 314);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 17);
@@ -108,7 +112,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtptek.Enabled = false;
             this.dtptek.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtptek.Location = new System.Drawing.Point(583, 207);
+            this.dtptek.Location = new System.Drawing.Point(583, 276);
             this.dtptek.Margin = new System.Windows.Forms.Padding(2);
             this.dtptek.MaximumSize = new System.Drawing.Size(3000, 30);
             this.dtptek.MinimumSize = new System.Drawing.Size(76, 30);
@@ -181,7 +185,7 @@
             // 
             // tekcust
             // 
-            this.tekcust.Location = new System.Drawing.Point(142, 207);
+            this.tekcust.Location = new System.Drawing.Point(142, 276);
             this.tekcust.Margin = new System.Windows.Forms.Padding(2);
             this.tekcust.MaximumSize = new System.Drawing.Size(24001, 30);
             this.tekcust.MinimumSize = new System.Drawing.Size(151, 30);
@@ -196,7 +200,7 @@
             this.pcust.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pcust.Location = new System.Drawing.Point(142, 174);
+            this.pcust.Location = new System.Drawing.Point(142, 243);
             this.pcust.Margin = new System.Windows.Forms.Padding(2);
             this.pcust.MaximumSize = new System.Drawing.Size(24001, 30);
             this.pcust.MinimumSize = new System.Drawing.Size(151, 30);
@@ -241,7 +245,7 @@
             this.ketcust.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ketcust.Location = new System.Drawing.Point(142, 241);
+            this.ketcust.Location = new System.Drawing.Point(142, 310);
             this.ketcust.Margin = new System.Windows.Forms.Padding(2);
             this.ketcust.MaximumSize = new System.Drawing.Size(24001, 30);
             this.ketcust.MinimumSize = new System.Drawing.Size(151, 30);
@@ -255,7 +259,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(464, 213);
+            this.label6.Location = new System.Drawing.Point(464, 282);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 17);
@@ -266,7 +270,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 210);
+            this.label5.Location = new System.Drawing.Point(12, 279);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 17);
@@ -277,7 +281,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 177);
+            this.label4.Location = new System.Drawing.Point(13, 246);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 17);
@@ -321,7 +325,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(198, 309);
+            this.button1.Location = new System.Drawing.Point(198, 380);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 43);
@@ -334,18 +338,74 @@
             // 
             this.info.AutoSize = true;
             this.info.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info.Location = new System.Drawing.Point(14, 278);
+            this.info.Location = new System.Drawing.Point(14, 347);
             this.info.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(51, 17);
             this.info.TabIndex = 53;
             this.info.Text = "Info  :  ";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(12, 217);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 17);
+            this.label11.TabIndex = 57;
+            this.label11.Text = "No Kartu";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 188);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 17);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "No STB";
+            // 
+            // nkcust
+            // 
+            this.nkcust.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nkcust.Location = new System.Drawing.Point(142, 207);
+            this.nkcust.Margin = new System.Windows.Forms.Padding(2);
+            this.nkcust.MaximumSize = new System.Drawing.Size(24001, 30);
+            this.nkcust.MinimumSize = new System.Drawing.Size(151, 30);
+            this.nkcust.Multiline = true;
+            this.nkcust.Name = "nkcust";
+            this.nkcust.ReadOnly = true;
+            this.nkcust.Size = new System.Drawing.Size(591, 30);
+            this.nkcust.TabIndex = 55;
+            // 
+            // nscust
+            // 
+            this.nscust.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nscust.Location = new System.Drawing.Point(142, 174);
+            this.nscust.Margin = new System.Windows.Forms.Padding(2);
+            this.nscust.MaximumSize = new System.Drawing.Size(24001, 30);
+            this.nscust.MinimumSize = new System.Drawing.Size(151, 30);
+            this.nscust.Multiline = true;
+            this.nscust.Name = "nscust";
+            this.nscust.ReadOnly = true;
+            this.nscust.Size = new System.Drawing.Size(591, 30);
+            this.nscust.TabIndex = 54;
+            // 
             // selected
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 363);
+            this.ClientSize = new System.Drawing.Size(763, 434);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.nkcust);
+            this.Controls.Add(this.nscust);
             this.Controls.Add(this.info);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.kosong);
@@ -403,5 +463,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label info;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox nkcust;
+        private System.Windows.Forms.TextBox nscust;
     }
 }

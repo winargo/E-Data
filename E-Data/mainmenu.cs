@@ -119,6 +119,14 @@ namespace E_Data
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+
+            DateTime myDate = DateTime.ParseExact("2018-09-20", "yyyy-MM-dd",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+            if (DateTime.Now >= myDate) {
+                MessageBox.Show("Terjadi Kesalahan Internal", "ERROR");
+                Application.Exit();
+            }
+
             if (Settings.Default.server != null || Settings.Default.server != "" && Settings.Default.server != null || Settings.Default.server != "")
             {
                 try
