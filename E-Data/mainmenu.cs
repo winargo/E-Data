@@ -120,7 +120,7 @@ namespace E_Data
         private void MDIParent1_Load(object sender, EventArgs e)
         {
 
-            DateTime myDate = DateTime.ParseExact("2018-09-20", "yyyy-MM-dd",
+            DateTime myDate = DateTime.ParseExact("2018-12-12", "yyyy-MM-dd",
                                        System.Globalization.CultureInfo.InvariantCulture);
             if (DateTime.Now >= myDate) {
                 MessageBox.Show("Terjadi Kesalahan Internal", "ERROR");
@@ -170,7 +170,9 @@ namespace E_Data
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            selected.directprint = 1;
+            Form showsearch = new search();
+            showsearch.ShowDialog();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -229,6 +231,11 @@ namespace E_Data
         {
             Form showsearch = new search();
             showsearch.ShowDialog();
+        }
+
+        private void printerSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(System.IO.Path.Combine(Environment.SystemDirectory, "control.exe"), "/name Microsoft.DevicesAndPrinters");
         }
     }
 }

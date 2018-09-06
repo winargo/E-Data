@@ -41,8 +41,9 @@
             this.printDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.printerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printerSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(210, 34);
+            this.button1.Location = new System.Drawing.Point(232, 34);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 88);
@@ -64,7 +65,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(408, 34);
+            this.button2.Location = new System.Drawing.Point(568, 34);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 88);
@@ -86,6 +87,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.reportToolStripMenuItem,
             this.databaseToolStripMenuItem,
+            this.printerToolStripMenuItem,
             this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -107,21 +109,21 @@
             // tambahDataToolStripMenuItem
             // 
             this.tambahDataToolStripMenuItem.Name = "tambahDataToolStripMenuItem";
-            this.tambahDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tambahDataToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.tambahDataToolStripMenuItem.Text = "Tambah Data";
             this.tambahDataToolStripMenuItem.Click += new System.EventHandler(this.tambahDataToolStripMenuItem_Click);
             // 
             // searchDataToolStripMenuItem
             // 
             this.searchDataToolStripMenuItem.Name = "searchDataToolStripMenuItem";
-            this.searchDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.searchDataToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.searchDataToolStripMenuItem.Text = "Check Data";
             this.searchDataToolStripMenuItem.Click += new System.EventHandler(this.searchDataToolStripMenuItem_Click);
             // 
             // printDataToolStripMenuItem
             // 
             this.printDataToolStripMenuItem.Name = "printDataToolStripMenuItem";
-            this.printDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printDataToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.printDataToolStripMenuItem.Text = "Edit Data";
             this.printDataToolStripMenuItem.Click += new System.EventHandler(this.printDataToolStripMenuItem_Click);
             // 
@@ -136,22 +138,9 @@
             // connectionToolStripMenuItem
             // 
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.connectionToolStripMenuItem.Text = "Connection";
             this.connectionToolStripMenuItem.Click += new System.EventHandler(this.connectionToolStripMenuItem_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(611, 34);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(187, 88);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Print Data";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox1
             // 
@@ -165,12 +154,26 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // printerToolStripMenuItem
+            // 
+            this.printerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printerSettingToolStripMenuItem});
+            this.printerToolStripMenuItem.Name = "printerToolStripMenuItem";
+            this.printerToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.printerToolStripMenuItem.Text = "Printer";
+            // 
+            // printerSettingToolStripMenuItem
+            // 
+            this.printerSettingToolStripMenuItem.Name = "printerSettingToolStripMenuItem";
+            this.printerSettingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printerSettingToolStripMenuItem.Text = "Printer Setting";
+            this.printerSettingToolStripMenuItem.Click += new System.EventHandler(this.printerSettingToolStripMenuItem_Click);
+            // 
             // mainmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 435);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip);
@@ -199,10 +202,11 @@
         private System.Windows.Forms.ToolStripMenuItem tambahDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printDataToolStripMenuItem;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem printerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printerSettingToolStripMenuItem;
     }
 }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using E_Data.Properties;
+using System.Threading;
 
 namespace E_Data
 {
@@ -27,6 +28,8 @@ namespace E_Data
         public string ketecust = "";
         public DateTime cust ;
         public string facust = "";
+        private Bitmap bitmap;
+        public static int directprint = 0;
 
         public selected()
         {
@@ -38,6 +41,7 @@ namespace E_Data
             if (mainmenu.idcustomer.Equals(""))
             {
                 this.Close();
+
             }
             else {
 
@@ -88,6 +92,11 @@ namespace E_Data
 
                     }
                 }
+
+                if (selected.directprint != 0) {
+                    print();
+                }
+                
             }
         }
 
@@ -465,7 +474,50 @@ namespace E_Data
         }
 
         private void print() {
+            Panel panel = new Panel();
+            this.Controls.Add(panel);
+            Graphics grp = panel.CreateGraphics();
+            Size formSize = this.ClientSize;
+            
+            bitmap = new Bitmap(formSize.Width, formSize.Height-85, grp);
+            this.BackColor = Color.LightGray;
+            grp = Graphics.FromImage(bitmap);
+            Point panelLocation = PointToScreen(panel.Location);
+            grp.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, formSize);
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
 
+            Thread.Sleep(1000);
+
+            if (selected.directprint != 0)
+            {
+                this.Close();
+                selected.directprint = 0;
+            }
+        }
+
+        
+        private void CaptureScreen()
+        {
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = this.Size;
+            bitmap = new Bitmap(s.Width, s.Height, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(bitmap);
+            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bitmap, 0, 0);
+        }
+        public static Bitmap Crop(Image myImage)
+        {
+            Bitmap croppedBitmap = new Bitmap(myImage);
+            croppedBitmap = croppedBitmap.Clone(
+                            new Rectangle(0, 0, myImage.Width - 200, myImage.Height - 200),
+                            System.Drawing.Imaging.PixelFormat.DontCare);
+            return croppedBitmap;
         }
     }
 }

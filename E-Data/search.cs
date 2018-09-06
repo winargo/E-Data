@@ -169,6 +169,8 @@ namespace E_Data
                 mainmenu.idcustomer = row.Cells["ID"].Value.ToString();
                 selected selecte = new selected();
                 selecte.ShowDialog();
+                
+
             }
         }
 
@@ -252,6 +254,13 @@ namespace E_Data
                     break;
             }
             return bHandled;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            selected.directprint = 0;
         }
     }
 }
