@@ -509,7 +509,27 @@ namespace E_Data
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(bitmap, 0, 0);
+            Graphics graphics = e.Graphics;
+
+            Font regular = new Font(FontFamily.GenericSansSerif, 10.0f, FontStyle.Regular);
+            Font bold = new Font(FontFamily.GenericSansSerif, 10.0f, FontStyle.Bold);
+            Font smaller = new Font(FontFamily.GenericSansSerif, 8.0f, FontStyle.Regular);
+            Font bigger = new Font(FontFamily.GenericSansSerif, 11.0f, FontStyle.Regular);
+            Font bigbold = new Font(FontFamily.GenericSansSerif, 18.0f, FontStyle.Bold);
+            Font bigbold1 = new Font(FontFamily.GenericSansSerif, 18.0f, FontStyle.Underline);
+
+
+            graphics.DrawString("MASTER PARABOLA", bigbold, Brushes.Black, 20, 20);
+            graphics.DrawString("LEMBARAN KERJA TEKNISI", bigbold1, Brushes.Black, 450, 20);
+            graphics.DrawString("JL MUHAMMAD JAM UJUNG KAMPUNG BARU KEC BAITURAHMAN 23116", bigger, Brushes.Black, 20, 60);
+            graphics.DrawString("BANDA ACEH INDONESIA HP 08119488888", bigger, Brushes.Black, 20, 80);
+
+
+            e.Graphics.DrawImage(bitmap, 0, 100);
+
+            graphics.DrawString("TTD Pelanggan                                                                                  TTD", bigger, Brushes.Black, 60, 500);
+            graphics.DrawString("Nama", bigger, Brushes.Black, 80, 580);
+            graphics.DrawString("Teknisi", bigger, Brushes.Black, 500, 580);
         }
         public static Bitmap Crop(Image myImage)
         {
