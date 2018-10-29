@@ -28,6 +28,7 @@ namespace E_Data
             cb1.Items.Add("alamat_customer");
             cb1.Items.Add("no_telepon");
             cb1.Items.Add("no_handphone");
+            cb1.Items.Add("no_stb");
             cb1.Items.Add("produk_customer");
             cb1.Items.Add("teknisi_customer");
             cb1.Items.Add("keterangan");
@@ -38,6 +39,7 @@ namespace E_Data
             cb2.Items.Add("alamat_customer");
             cb2.Items.Add("no_telepon");
             cb2.Items.Add("no_handphone");
+            cb1.Items.Add("no_stb");
             cb2.Items.Add("produk_customer");
             cb2.Items.Add("teknisi_customer");
             cb2.Items.Add("keterangan");
